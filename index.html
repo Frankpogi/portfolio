@@ -2,23 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<!-- Responsive (para gumana sa phone) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Franklin De Vera | Portfolio</title>
 
 <style>
 
-/* ===== BODY DESIGN ===== */
+/* ===== BODY WITH ANIMATION ===== */
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #0f172a;
     color: #e2e8f0;
+    background: linear-gradient(-45deg, #0f172a, #020617, #0f172a, #020617);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
 }
 
-/* ===== MAIN CONTAINER ===== */
+/* background animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* tech grid */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+}
+
+/* ===== CONTAINER ===== */
 .container {
     width: 85%;
     margin: auto;
@@ -30,46 +49,57 @@ header {
     padding: 60px 0;
 }
 
-/* ===== PROFILE IMAGE ===== */
-/* 👉 DITO naaapektuhan yung image mo (size, bilog, border) */
+/* profile */
 .profile-pic {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* ginagawa bilog */
+    border-radius: 50%;
     object-fit: cover;
     border: 3px solid #38bdf8;
     margin-bottom: 15px;
 }
 
-/* ===== NAME (GRADIENT TEXT) ===== */
-header h1 {
+/* typing effect */
+#typing {
     font-size: 40px;
-    margin: 10px 0;
     background: linear-gradient(to right, #38bdf8, #6366f1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    border-right: 2px solid #38bdf8;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-/* ===== SUBTITLE ===== */
+/* subtitle */
 header p {
     color: #94a3b8;
 }
 
-/* ===== SECTION SPACING ===== */
+/* ===== SECTIONS ===== */
 section {
     margin: 40px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
 }
 
-/* ===== SECTION TITLE ===== */
+/* reveal active */
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* titles */
 h2 {
     border-left: 4px solid #38bdf8;
     padding-left: 10px;
-    margin-bottom: 20px;
 }
 
-/* ===== CARD DESIGN ===== */
+/* ===== CARDS ===== */
 .card {
-    background: #1e293b;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(56,189,248,0.1);
     padding: 20px;
     border-radius: 12px;
     margin-bottom: 15px;
@@ -78,28 +108,26 @@ h2 {
 
 /* hover effect */
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(56,189,248,0.2);
 }
 
-/* ===== SKILLS STYLE ===== */
+/* skills */
 .skills span {
     display: inline-block;
     background: #334155;
     padding: 8px 12px;
     border-radius: 20px;
     margin: 5px;
-    font-size: 14px;
 }
 
-/* ===== PROJECT TITLE ===== */
+/* project title */
 .project-title {
     font-weight: bold;
     font-size: 18px;
-    margin-bottom: 5px;
 }
 
-/* ===== BUTTON STYLE ===== */
+/* buttons */
 .btn {
     display: inline-block;
     margin-top: 10px;
@@ -110,11 +138,6 @@ h2 {
     font-size: 14px;
     background: #38bdf8;
     color: #0f172a;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    opacity: 0.8;
 }
 
 .btn.secondary {
@@ -123,7 +146,7 @@ h2 {
     color: #38bdf8;
 }
 
-/* ===== FOOTER ===== */
+/* footer */
 footer {
     text-align: center;
     padding: 20px;
@@ -138,25 +161,21 @@ footer {
 <div class="container">
 
 <header>
-
-    <!-- 🔥 DITO MO ILALAGAY PROFILE PIC -->
-    <!-- 👉 PALITAN MO YUNG "profile.jpg" NG FILE NAME NG IMAGE MO -->
-    <!-- 👉 EXAMPLE: kung ang file mo ay "ako.png", gawin mong src="ako.png" -->
+    <!-- PROFILE IMAGE -->
     <img src="profile.png" class="profile-pic">
 
-    <h1>Franklin De Vera</h1>
+    <!-- TYPING NAME -->
+    <h1 id="typing"></h1>
 
-    <!-- 👉 pwede mo baguhin job title mo dito -->
-    <p>SAP S/4HANA ERP Analyst | SD, PP & MM | End-to-End Process Support | Information Technology</p>
-    
+    <p>SAP S/4HANA ERP Analyst | SD, PP & MM | End-to-End Process Support</p>
 </header>
 
 <section>
     <h2>About Me</h2>
     <div class="card">
         <p>
-            Experienced SAP S/4HANA support analyst handling SD, PP, and MM processes,providing end-to-end operational support from material
-            creation to shipment, including master data validation, order processing, and issue resolution across business users.
+            Experienced SAP S/4HANA support analyst handling SD, PP, and MM processes,
+            providing end-to-end operational support and system troubleshooting.
         </p>
     </div>
 </section>
@@ -177,64 +196,35 @@ footer {
 
     <div class="card">
         <div class="project-title">Login System</div>
-        <p>Authentication system using PHP & MySQL. | SAP S4 HANA</p>
-
-        <!-- 👉 PALITAN MO NG LINK PAG MAY LIVE KA NA -->
-        <a href="#" target="_blank" class="btn">View Live</a>
-
-        <!-- 👉 LAGAY MO DITO GITHUB LINK NG PROJECT -->
-        <a href="#" target="_blank" class="btn secondary">View Code</a>
+        <p>Authentication system using PHP & MySQL.</p>
+        <a href="#" class="btn">View Live</a>
+        <a href="#" class="btn secondary">View Code</a>
     </div>
 
     <div class="card">
         <div class="project-title">Inventory System</div>
         <p>Basic CRUD system.</p>
-
         <a href="#" class="btn">Coming Soon</a>
         <a href="#" class="btn secondary">Coming Soon</a>
     </div>
-    <!-- 👉 Short resume summary 
-    <section>
-    <h2>Resume</h2>
 
-    <div class="card">
-
-        <!-- 👉 Short resume summary -->
-        <p>
-            Download my full resume for detailed work experience, skills, and technical background.
-        </p>
-
-        <!-- 👉 DOWNLOAD BUTTON (IMPORTANT PART) -->
-        <!-- PALITAN MO YUNG LINK NG ACTUAL RESUME FILE MO -->
-         <a href="resume" target="_blank" class="btn">    
-             Download Resume 
-        </a>
-        
-
-    </div>
 </section>
 
-    <section>
+<section>
     <h2>Fun Fact</h2>
     <div class="card">
         <p>
-            Outside of work, I enjoy exploring tech trends, watching anime, and continuously improving my skills in both SAP and web development. 
-            I believe learning never stops, and I always look for ways to grow both professionally and personally.
+            I enjoy watching anime and analyzing how systems work—this mindset helps me troubleshoot SAP issues and build efficient solutions.
         </p>
     </div>
-</section>
-
 </section>
 
 <section>
     <h2>Experience</h2>
     <div class="card">
-        <h3>SAP Power User</h3>
         <p>
-            Detail-oriented professional with experience in data entry, invoice processing, and information management. Skilled in handling data accurately and efficiently
-            SAP Specialist with knowledge in system processes, troubleshooting, and workflow support.
-            Also knowledgeable in web development, business analytics, and technical support. Reliable, fast learner, and committed to delivering quality results.
-            
+            SAP Power User handling ERP processes, supporting finance and operations,
+            and resolving system-related issues efficiently.
         </p>
     </div>
 </section>
@@ -242,12 +232,8 @@ footer {
 <section>
     <h2>Contact</h2>
     <div class="card">
-
-        <!-- 👉 PALITAN MO EMAIL MO -->
         <p>Email: frank.devera22@gmail.com</p>
-        <p>Phone number: 09154872768 </p>
-        <p>Address: Sitio Pag-asa Camaya Mariveles Bataan </p>
-
+        <p>Phone: 09154872768</p>
     </div>
 </section>
 
@@ -256,6 +242,36 @@ footer {
 </footer>
 
 </div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+
+/* ===== TYPING EFFECT ===== */
+const text = "Franklin De Vera";
+let index = 0;
+
+function type() {
+    if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 100);
+    }
+}
+type();
+
+/* ===== SCROLL REVEAL ===== */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            section.classList.add("show");
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>
