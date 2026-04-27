@@ -2,13 +2,105 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- Responsive (para gumana sa phone) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Franklin De Vera | Portfolio</title>
-    <a href="#" class="btn">Coming Soon</a>
-<a href="https://..." target="_blank" class="btn">View Live</a>
+
 <style>
+
+/* ===== BODY DESIGN ===== */
 body {
-    .btn {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    padding: 60px 0;
+}
+
+/* ===== PROFILE IMAGE ===== */
+/* 👉 DITO naaapektuhan yung image mo (size, bilog, border) */
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* ginagawa bilog */
+    object-fit: cover;
+    border: 3px solid #38bdf8;
+    margin-bottom: 15px;
+}
+
+/* ===== NAME (GRADIENT TEXT) ===== */
+header h1 {
+    font-size: 40px;
+    margin: 10px 0;
+    background: linear-gradient(to right, #38bdf8, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===== SUBTITLE ===== */
+header p {
+    color: #94a3b8;
+}
+
+/* ===== SECTION SPACING ===== */
+section {
+    margin: 40px 0;
+}
+
+/* ===== SECTION TITLE ===== */
+h2 {
+    border-left: 4px solid #38bdf8;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+/* ===== CARD DESIGN ===== */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+/* hover effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== SKILLS STYLE ===== */
+.skills span {
+    display: inline-block;
+    background: #334155;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+/* ===== PROJECT TITLE ===== */
+.project-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* ===== BUTTON STYLE ===== */
+.btn {
     display: inline-block;
     margin-top: 10px;
     margin-right: 10px;
@@ -31,99 +123,30 @@ body {
     color: #38bdf8;
 }
 
-    
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-}
-
-.container {
-    width: 85%;
-    margin: auto;
-}
-
-header {
-    text-align: center;
-    padding: 60px 0;
-}
-
-.profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #38bdf8;
-    margin-bottom: 15px;
-}
-
-header h1 {
-    font-size: 40px;
-    margin: 10px 0;
-    background: linear-gradient(to right, #38bdf8, #6366f1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-header p {
-    color: #94a3b8;
-}
-
-section {
-    margin: 40px 0;
-}
-
-h2 {
-    border-left: 4px solid #38bdf8;
-    padding-left: 10px;
-    margin-bottom: 20px;
-}
-
-.card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-.skills span {
-    display: inline-block;
-    background: #334155;
-    padding: 8px 12px;
-    border-radius: 20px;
-    margin: 5px;
-    font-size: 14px;
-}
-
-.project-title {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
+/* ===== FOOTER ===== */
 footer {
     text-align: center;
     padding: 20px;
     color: #64748b;
 }
-</style>
 
+</style>
 </head>
+
 <body>
 
 <div class="container">
 
 <header>
-    <!-- PALITAN MO NG SARILI MONG IMAGE -->
+
+    <!-- 🔥 DITO MO ILALAGAY PROFILE PIC -->
+    <!-- 👉 PALITAN MO YUNG "profile.jpg" NG FILE NAME NG IMAGE MO -->
+    <!-- 👉 EXAMPLE: kung ang file mo ay "ako.png", gawin mong src="ako.png" -->
     <img src="profile.jpg" class="profile-pic">
 
     <h1>Franklin De Vera</h1>
+
+    <!-- 👉 pwede mo baguhin job title mo dito -->
     <p>Web Developer | SAP Power User</p>
 </header>
 
@@ -132,8 +155,7 @@ footer {
     <div class="card">
         <p>
             I am a SAP Power User with a background in web development using PHP, JavaScript, and CSS.
-            I specialize in ERP processes, troubleshooting system issues, and improving workflows.
-            Currently transitioning back into development while combining business and technical skills.
+            I specialize in ERP processes and system support.
         </p>
     </div>
 </section>
@@ -146,36 +168,29 @@ footer {
         <span>CSS</span>
         <span>HTML</span>
         <span>SAP</span>
-        <span>ERP Process</span>
     </div>
 </section>
 
 <section>
-
     <h2>Projects</h2>
 
     <div class="card">
         <div class="project-title">Login System</div>
-        <p>Authentication system with login validation using PHP & MySQL.</p>
+        <p>Authentication system using PHP & MySQL.</p>
 
-        <a href="#" class="btn">View Live</a>
-        <a href="#" class="btn secondary">View Code</a>
+        <!-- 👉 PALITAN MO NG LINK PAG MAY LIVE KA NA -->
+        <a href="#" target="_blank" class="btn">View Live</a>
+
+        <!-- 👉 LAGAY MO DITO GITHUB LINK NG PROJECT -->
+        <a href="#" target="_blank" class="btn secondary">View Code</a>
     </div>
 
     <div class="card">
-        <div class="project-title">Simple Inventory System</div>
-        <p>Basic CRUD system for managing items.</p>
+        <div class="project-title">Inventory System</div>
+        <p>Basic CRUD system.</p>
 
-        <a href="#" class="btn">View Live</a>
-        <a href="#" class="btn secondary">View Code</a>
-    </div>
-
-    <div class="card">
-        <div class="project-title">ERP Process Documentation</div>
-        <p>Structured ERP workflow documentation.</p>
-
-        <a href="#" class="btn">View Live</a>
-        <a href="#" class="btn secondary">View Code</a>
+        <a href="#" class="btn">Coming Soon</a>
+        <a href="#" class="btn secondary">Coming Soon</a>
     </div>
 
 </section>
@@ -186,7 +201,7 @@ footer {
         <h3>SAP Power User</h3>
         <p>
             Supporting ERP transactions, coordinating with finance teams,
-            resolving system issues, and ensuring process accuracy.
+            and resolving system issues.
         </p>
     </div>
 </section>
@@ -194,7 +209,10 @@ footer {
 <section>
     <h2>Contact</h2>
     <div class="card">
-        <p>Email: frank.devera22@gmail.com</p>
+
+        <!-- 👉 PALITAN MO EMAIL MO -->
+        <p>Email: your@email.com</p>
+
     </div>
 </section>
 
