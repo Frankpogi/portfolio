@@ -3,211 +3,317 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Franklin De Vera | Portfolio</title>
 
 <style>
 
-/* ===== BODY WITH ANIMATION ===== */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    color: #e2e8f0;
-    background: linear-gradient(-45deg, #0f172a, #020617, #0f172a, #020617);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+/* ===== GLOBAL ===== */
+html{
+    scroll-behavior:smooth;
 }
 
-/* background animation */
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    color:#e2e8f0;
+
+    background:linear-gradient(
+        -45deg,
+        #0f172a,
+        #020617,
+        #111827,
+        #020617
+    );
+
+    background-size:400% 400%;
+    animation:gradientMove 15s ease infinite;
 }
 
-/* tech grid */
-body::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-image: 
+/* animated bg */
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* tech grid overlay */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background-image:
         linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: -1;
+
+    background-size:40px 40px;
+    z-index:-1;
 }
 
 /* ===== CONTAINER ===== */
-.container {
-    width: 85%;
-    margin: auto;
+.container{
+    width:85%;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+
+    padding:20px 0;
+    position:sticky;
+    top:0;
+
+    backdrop-filter:blur(10px);
+    background:rgba(2,6,23,0.6);
+
+    z-index:999;
+}
+
+nav a{
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+    text-shadow:0 0 10px #38bdf8;
 }
 
 /* ===== HEADER ===== */
-header {
-    text-align: center;
-    padding: 60px 0;
+header{
+    text-align:center;
+    padding:70px 0;
 }
 
-/* profile */
-.profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #38bdf8;
-    margin-bottom: 15px;
+/* neon profile wrapper */
+.profile-wrap{
+    display:inline-block;
+    padding:5px;
+    border-radius:50%;
+
+    background:linear-gradient(
+        45deg,
+        #0ea5e9,
+        #38bdf8,
+        #6366f1
+    );
+
+    animation:neonPulse 2s infinite ease-in-out;
 }
 
-/* typing effect */
-#typing {
-    font-size: 40px;
-    background: linear-gradient(to right, #38bdf8, #6366f1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    border-right: 2px solid #38bdf8;
-    white-space: nowrap;
-    overflow: hidden;
+/* profile image */
+.profile-pic{
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+
+    border:3px solid #0f172a;
 }
 
-/* subtitle */
-header p {
-    color: #94a3b8;
-}
+/* neon pulse */
+@keyframes neonPulse{
 
-/* ===== SECTIONS ===== */
-section {
-    margin: 40px 0;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
-}
-
-/* reveal active */
-section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* titles */
-h2 {
-    border-left: 4px solid #38bdf8;
-    padding-left: 10px;
-}
-
-/* ===== CARDS ===== */
-.card {
-    background: rgba(30, 41, 59, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(56,189,248,0.1);
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    transition: 0.3s;
-}
-
-/* hover effect */
-.card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(56,189,248,0.2);
-}
-
-/* skills */
-.skills span {
-    display: inline-block;
-    background: #334155;
-    padding: 8px 12px;
-    border-radius: 20px;
-    margin: 5px;
-}
-
-/* project title */
-.project-title {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-/* buttons */
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    margin-right: 10px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 14px;
-    background: #38bdf8;
-    color: #0f172a;
-}
-
-.btn.secondary {
-    background: transparent;
-    border: 1px solid #38bdf8;
-    color: #38bdf8;
-}
-
-/* footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #64748b;
-
-}
-    /* ===== FIRE GLOW PROFILE ===== */
-.profile-wrap {
-    display: inline-block;
-    padding: 5px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #ff4d00, #ff9900, #ff0000);
-    animation: fireGlow 2s infinite alternate;
-}
-
-/* keep your existing profile */
-.profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-}
-    /* ===== NEON BLUE WRAPPER ===== */
-.profile-wrap {
-    display: inline-block;
-    padding: 5px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #0ea5e9, #38bdf8, #6366f1);
-    animation: neonPulse 2s infinite ease-in-out;
-}
-
-/* IMAGE */
-.profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-}
-
-/* NEON ANIMATION */
-@keyframes neonPulse {
-    0% {
+    0%{
         box-shadow:
             0 0 5px #38bdf8,
             0 0 10px #38bdf8,
             0 0 20px #0ea5e9;
     }
-    50% {
+
+    50%{
         box-shadow:
             0 0 10px #38bdf8,
             0 0 20px #0ea5e9,
             0 0 30px #6366f1;
     }
-    100% {
+
+    100%{
         box-shadow:
             0 0 5px #38bdf8,
             0 0 15px #0ea5e9,
             0 0 25px #6366f1;
     }
+}
+
+/* typing name */
+#typing{
+    font-size:clamp(32px,6vw,50px);
+
+    margin-top:20px;
+
+    background:linear-gradient(
+        to right,
+        #38bdf8,
+        #6366f1
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    border-right:2px solid #38bdf8;
+
+    white-space:nowrap;
+    overflow:hidden;
+
+    display:inline-block;
+}
+
+/* subtitle */
+.subtitle{
+    color:#94a3b8;
+    margin-top:10px;
+    font-size:16px;
+}
+
+/* ===== SECTIONS ===== */
+section{
+    margin:60px 0;
+
+    opacity:0;
+    transform:translateY(30px);
+
+    transition:all 0.8s ease;
+}
+
+section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* section titles */
+h2{
+    border-left:4px solid #38bdf8;
+    padding-left:12px;
+
+    margin-bottom:25px;
+}
+
+/* ===== CARDS ===== */
+.card{
+    background:rgba(30,41,59,0.7);
+
+    border:1px solid rgba(56,189,248,0.1);
+
+    backdrop-filter:blur(10px);
+
+    padding:22px;
+    border-radius:16px;
+
+    margin-bottom:20px;
+
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+
+    box-shadow:
+        0 15px 30px rgba(56,189,248,0.2);
+}
+
+/* ===== SKILLS ===== */
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skills span{
+    background:#1e293b;
+
+    border:1px solid rgba(56,189,248,0.2);
+
+    padding:10px 15px;
+    border-radius:30px;
+
+    transition:0.3s;
+}
+
+.skills span:hover{
+    background:#38bdf8;
+    color:#020617;
+
+    transform:translateY(-3px);
+}
+
+/* ===== PROJECTS ===== */
+.project-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+/* ===== BUTTONS ===== */
+.btn{
+    display:inline-block;
+
+    margin-top:10px;
+    margin-right:10px;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+    background:#38bdf8;
+    color:#0f172a;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 15px rgba(56,189,248,0.5);
+}
+
+.btn.secondary{
+    background:transparent;
+    border:1px solid #38bdf8;
+    color:#38bdf8;
+}
+
+/* ===== CONTACT ===== */
+.contact p{
+    margin:10px 0;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;
+    padding:30px 0;
+    color:#64748b;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+    .container{
+        width:92%;
+    }
+
+    nav{
+        gap:15px;
+        flex-wrap:wrap;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+}
 
 </style>
 </head>
@@ -216,99 +322,213 @@ footer {
 
 <div class="container">
 
-<header>
-    <!-- PROFILE IMAGE -->
-    <div class="profile-wrap">
-    <img src="profile.png" class="profile-pic">
-</div>
+<!-- ===== NAVBAR ===== -->
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-    <!-- TYPING NAME -->
+<!-- ===== HEADER ===== -->
+<header>
+
+    <div class="profile-wrap">
+        <img src="profile.png" class="profile-pic">
+    </div>
+
     <h1 id="typing"></h1>
 
-    <p>SAP S/4HANA ERP Analyst | SD, PP & MM | End-to-End Process Support</p>
+    <p class="subtitle">
+        SAP S/4HANA ERP Analyst | SD, PP & MM | End-to-End Process Support
+    </p>
+
 </header>
 
-<section>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+
     <h2>About Me</h2>
+
     <div class="card">
+
         <p>
-            Experienced SAP S/4HANA support analyst handling SD, PP, and MM processes,
-            providing end-to-end operational support and system troubleshooting.
+            Experienced SAP S/4HANA support analyst handling SD, PP, and MM
+            processes, providing end-to-end operational support, troubleshooting,
+            and process improvement support across business operations.
         </p>
+
     </div>
+
 </section>
 
-<section>
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+
     <h2>Skills</h2>
+
     <div class="card skills">
-        <span>PHP</span>
-        <span>JavaScript</span>
-        <span>CSS</span>
+
+        <span>SAP SD</span>
+        <span>SAP MM</span>
+        <span>SAP PP</span>
         <span>HTML</span>
-        <span>SAP</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>PHP</span>
+        <span>ERP Support</span>
+        <span>Troubleshooting</span>
+
     </div>
+
 </section>
 
-<section>
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+
     <h2>Projects</h2>
 
     <div class="card">
-        <div class="project-title">Login System</div>
-        <p>Authentication system using PHP & MySQL.</p>
-        <a href="#" class="btn">View Live</a>
-        <a href="#" class="btn secondary">View Code</a>
-    </div>
 
-    <div class="card">
-        <div class="project-title">Inventory System</div>
-        <p>Basic CRUD system.</p>
-        <a href="#" class="btn">Coming Soon</a>
-        <a href="#" class="btn secondary">Coming Soon</a>
-    </div>
+        <div class="project-title">
+            Login System
+        </div>
 
-</section>
-
-<section>
-    <h2>Fun Fact</h2>
-    <div class="card">
         <p>
-            I enjoy watching anime and analyzing how systems work—this mindset helps me troubleshoot SAP issues and build efficient solutions.
+            Authentication system using PHP & MySQL with user validation.
         </p>
+
+        <a href="#" class="btn">
+            View Live
+        </a>
+
+        <a href="#" class="btn secondary">
+            View Code
+        </a>
+
     </div>
+
+    <div class="card">
+
+        <div class="project-title">
+            Inventory System
+        </div>
+
+        <p>
+            Basic inventory CRUD system with item management functionality.
+        </p>
+
+        <a href="#" class="btn">
+            Coming Soon
+        </a>
+
+        <a href="#" class="btn secondary">
+            Coming Soon
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <div class="project-title">
+            SAP Process Monitoring Concept
+        </div>
+
+        <p>
+            Concept UI for monitoring ERP operational process flow and issue tracking.
+        </p>
+
+        <a href="#" class="btn">
+            Preview Soon
+        </a>
+
+    </div>
+
 </section>
 
-<section>
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+
     <h2>Experience</h2>
+
     <div class="card">
+
         <p>
-            SAP Power User handling ERP processes, supporting finance and operations,
-            and resolving system-related issues efficiently.
+            SAP Power User supporting ERP operational processes, assisting users,
+            validating process flow, troubleshooting issues, and coordinating
+            with different departments to ensure smooth business operations.
         </p>
+
     </div>
+
+</section>
+
+<!-- ===== RESUME ===== -->
 <section class="resume-section">
 
+    <h2>Resume</h2>
+
+    <div class="card">
+
+        <p>
+            Download my full resume for detailed work experience,
+            skills, and technical background.
+        </p>
+
+        <!-- intentionally hidden/broken 😆 -->
+        <a href="resume" target="_blank" class="btn">
+            Download Resume
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ===== FUN FACT ===== -->
+<section>
+
+    <h2>Fun Fact</h2>
+
+    <div class="card">
+
+        <p>
+            I enjoy watching anime and analyzing how systems work —
+            this mindset helps me troubleshoot SAP issues and build
+            efficient solutions.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+
+    <h2>Contact</h2>
+
+    <div class="card contact">
+
+        <p>Email: frank.devera22@gmail.com</p>
+        <p>Phone no.: 09154872768</p>
+        <p>Facebook: Franklin De Vera</p>
+
+        <p>
+            Currently available for collaboration,
+            ERP support, and web development learning opportunities.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+
     <p>
-        Download my full resume for detailed work experience, skills, and technical background.
+        © 2026 Franklin De Vera | Portfolio
     </p>
 
-    <a href="resume" target="_blank" class="btn">    
-        Download Resume 
-    </a>
-
-</section>
-
-<section>
-    <h2>Contact</h2>
-    <div class="card">
-        <p>Email: frank.devera22@gmail.com</p>
-        <p>FB : Franklin De vera</p>
-        <p>Phone: 09154872768</p>
-       
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 Franklin De Vera</p>
 </footer>
 
 </div>
@@ -320,26 +540,40 @@ footer {
 const text = "Franklin De Vera";
 let index = 0;
 
-function type() {
-    if (index < text.length) {
+function type(){
+
+    if(index < text.length){
+
         document.getElementById("typing").innerHTML += text.charAt(index);
+
         index++;
+
         setTimeout(type, 100);
     }
 }
+
 type();
 
 /* ===== SCROLL REVEAL ===== */
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
+
     sections.forEach(section => {
+
         const top = section.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
+
+        if(top < window.innerHeight - 100){
+
             section.classList.add("show");
         }
+
     });
+
 });
+
+/* trigger reveal on first load */
+window.dispatchEvent(new Event('scroll'));
 
 </script>
 
