@@ -30,23 +30,20 @@ body{
     animation:gradientMove 15s ease infinite;
 }
 
-/* animated bg */
 @keyframes gradientMove{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-/* tech grid overlay */
+/* grid overlay */
 body::before{
     content:"";
     position:fixed;
     inset:0;
-
     background-image:
         linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
-
     background-size:40px 40px;
     z-index:-1;
 }
@@ -58,19 +55,16 @@ body::before{
     margin:auto;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAV ===== */
 nav{
     display:flex;
     justify-content:center;
     gap:25px;
-
     padding:20px 0;
     position:sticky;
     top:0;
-
     backdrop-filter:blur(10px);
     background:rgba(2,6,23,0.6);
-
     z-index:999;
 }
 
@@ -92,97 +86,59 @@ header{
     padding:70px 0;
 }
 
-/* neon profile wrapper */
 .profile-wrap{
     display:inline-block;
     padding:5px;
     border-radius:50%;
-
-    background:linear-gradient(
-        45deg,
-        #0ea5e9,
-        #38bdf8,
-        #6366f1
-    );
-
+    background:linear-gradient(45deg,#0ea5e9,#38bdf8,#6366f1);
     animation:neonPulse 2s infinite ease-in-out;
 }
 
-/* profile image */
 .profile-pic{
     width:130px;
     height:130px;
-
     border-radius:50%;
     object-fit:cover;
-    display:block;
-
     border:3px solid #0f172a;
 }
 
-/* neon pulse */
 @keyframes neonPulse{
-
-    0%{
-        box-shadow:
-            0 0 5px #38bdf8,
-            0 0 10px #38bdf8,
-            0 0 20px #0ea5e9;
-    }
-
-    50%{
-        box-shadow:
-            0 0 10px #38bdf8,
-            0 0 20px #0ea5e9,
-            0 0 30px #6366f1;
-    }
-
-    100%{
-        box-shadow:
-            0 0 5px #38bdf8,
-            0 0 15px #0ea5e9,
-            0 0 25px #6366f1;
-    }
+    0%{box-shadow:0 0 5px #38bdf8,0 0 15px #0ea5e9;}
+    50%{box-shadow:0 0 10px #38bdf8,0 0 25px #6366f1;}
+    100%{box-shadow:0 0 5px #38bdf8,0 0 15px #0ea5e9;}
 }
 
-/* typing name */
 #typing{
     font-size:clamp(32px,6vw,50px);
-
     margin-top:20px;
 
-    background:linear-gradient(
-        to right,
-        #38bdf8,
-        #6366f1
-    );
-
+    background:linear-gradient(to right,#38bdf8,#6366f1);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 
     border-right:2px solid #38bdf8;
-
     white-space:nowrap;
     overflow:hidden;
-
     display:inline-block;
 }
 
-/* subtitle */
 .subtitle{
     color:#94a3b8;
     margin-top:10px;
-    font-size:16px;
+}
+
+.hero-impact{
+    color:#38bdf8;
+    margin-top:10px;
+    font-weight:500;
 }
 
 /* ===== SECTIONS ===== */
 section{
     margin:60px 0;
-
     opacity:0;
     transform:translateY(30px);
-
-    transition:all 0.8s ease;
+    transition:0.8s ease;
 }
 
 section.show{
@@ -190,99 +146,104 @@ section.show{
     transform:translateY(0);
 }
 
-/* section titles */
 h2{
     border-left:4px solid #38bdf8;
     padding-left:12px;
-
     margin-bottom:25px;
 }
 
-/* ===== CARDS ===== */
+/* ===== CARD ===== */
 .card{
     background:rgba(30,41,59,0.7);
-
     border:1px solid rgba(56,189,248,0.1);
-
     backdrop-filter:blur(10px);
-
     padding:22px;
     border-radius:16px;
-
     margin-bottom:20px;
-
     transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-8px) scale(1.02);
-
-    box-shadow:
-        0 15px 30px rgba(56,189,248,0.2);
-}
-
-/* ===== SKILLS ===== */
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.skills span{
-    background:#1e293b;
-
-    border:1px solid rgba(56,189,248,0.2);
-
-    padding:10px 15px;
-    border-radius:30px;
-
-    transition:0.3s;
-}
-
-.skills span:hover{
-    background:#38bdf8;
-    color:#020617;
-
-    transform:translateY(-3px);
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(56,189,248,0.2);
 }
 
 /* ===== PROJECTS ===== */
 .project-title{
     font-size:20px;
-    font-weight:bold;
+    font-weight:700;
+    margin-bottom:8px;
+    color:#38bdf8;
+}
+
+.status{
+    display:inline-block;
+    font-size:12px;
+    padding:4px 10px;
+    border-radius:20px;
+    font-weight:600;
     margin-bottom:10px;
+}
+
+.status.done{
+    background:#10b981;
+    color:#0f172a;
+}
+
+.status.wip{
+    background:#f59e0b;
+    color:#0f172a;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+}
+
+.tag{
+    font-size:12px;
+    padding:5px 10px;
+    border-radius:20px;
+    background:#0f172a;
+    border:1px solid rgba(56,189,248,0.3);
+    color:#94a3b8;
 }
 
 /* ===== BUTTONS ===== */
 .btn{
     display:inline-block;
-
     margin-top:10px;
     margin-right:10px;
-
     padding:10px 16px;
-
     border-radius:10px;
     text-decoration:none;
-
     font-size:14px;
     font-weight:600;
-
-    background:#38bdf8;
-    color:#0f172a;
-
     transition:0.3s;
 }
 
-.btn:hover{
+.btn.primary{
+    background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+    color:#0f172a;
+    box-shadow:0 4px 12px rgba(56,189,248,0.3);
+}
+
+.btn.primary:hover{
     transform:translateY(-3px);
-    box-shadow:0 0 15px rgba(56,189,248,0.5);
+    box-shadow:0 8px 20px rgba(56,189,248,0.4);
 }
 
 .btn.secondary{
     background:transparent;
     border:1px solid #38bdf8;
     color:#38bdf8;
+}
+
+.btn.secondary:hover{
+    background:#38bdf8;
+    color:#0f172a;
 }
 
 /* ===== CONTACT ===== */
@@ -299,20 +260,9 @@ footer{
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-
-    .container{
-        width:92%;
-    }
-
-    nav{
-        gap:15px;
-        flex-wrap:wrap;
-    }
-
-    .card{
-        padding:18px;
-    }
-
+    .container{width:92%;}
+    nav{flex-wrap:wrap; gap:15px;}
+    .card{padding:18px;}
 }
 
 </style>
@@ -322,7 +272,7 @@ footer{
 
 <div class="container">
 
-<!-- ===== NAVBAR ===== -->
+<!-- NAV -->
 <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -331,9 +281,8 @@ footer{
     <a href="#contact">Contact</a>
 </nav>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <header>
-
     <div class="profile-wrap">
         <img src="profile.png" class="profile-pic">
     </div>
@@ -341,233 +290,153 @@ footer{
     <h1 id="typing"></h1>
 
     <p class="subtitle">
-        SAP S/4HANA ERP Analyst | SD, PP & MM | End-to-End Process Support
+        SAP S/4HANA ERP Analyst | SD, PP & MM | Process Support
     </p>
 
+    <p class="hero-impact">
+        Building ERP-aware systems with real SAP operational experience
+    </p>
 </header>
 
-<!-- ===== ABOUT ===== -->
+<!-- ABOUT -->
 <section id="about">
-
     <h2>About Me</h2>
-
     <div class="card">
-
-        <p>
-            Experienced SAP S/4HANA support analyst handling SD, PP, and MM
-            processes, providing end-to-end operational support, troubleshooting,
-            and process improvement support across business operations.
-        </p>
-
+        <p>Experienced SAP S/4HANA support analyst handling SD, PP, and MM processes, troubleshooting issues, and supporting business operations end-to-end.</p>
     </div>
-
 </section>
 
-<!-- ===== SKILLS ===== -->
+<!-- SKILLS -->
 <section id="skills">
-
     <h2>Skills</h2>
-
-    <div class="card skills">
-
-        <span>SAP SD</span>
-        <span>SAP MM</span>
-        <span>SAP PP</span>
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>PHP</span>
-        <span>ERP Support</span>
-        <span>Troubleshooting</span>
-
+    <div class="card">
+        <div class="tags">
+            <span class="tag">SAP SD</span>
+            <span class="tag">SAP MM</span>
+            <span class="tag">SAP PP</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">PHP</span>
+            <span class="tag">ERP Support</span>
+        </div>
     </div>
-
 </section>
 
-<!-- ===== PROJECTS ===== -->
+<!-- PROJECTS -->
 <section id="projects">
-
     <h2>Projects</h2>
 
     <div class="card">
+        <span class="status done">Completed</span>
+        <div class="project-title">Login System</div>
+        <p>PHP & MySQL authentication system with user validation.</p>
 
-        <div class="project-title">
-            Login System
+        <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Auth</span>
         </div>
 
-        <p>
-            Authentication system using PHP & MySQL with user validation.
-        </p>
-
-        <a href="#" class="btn">
-            View Live
-        </a>
-
-        <a href="#" class="btn secondary">
-            View Code
-        </a>
-
+        <a href="#" class="btn primary">View Live</a>
+        <a href="#" class="btn secondary">View Code</a>
     </div>
 
     <div class="card">
+        <span class="status wip">In Progress</span>
+        <div class="project-title">Inventory System</div>
+        <p>Basic CRUD inventory management system.</p>
 
-        <div class="project-title">
-            Inventory System
+        <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">CRUD</span>
+            <span class="tag">MySQL</span>
         </div>
 
-        <p>
-            Basic inventory CRUD system with item management functionality.
-        </p>
-
-        <a href="#" class="btn">
-            Coming Soon
-        </a>
-
-        <a href="#" class="btn secondary">
-            Coming Soon
-        </a>
-
+        <a href="#" class="btn primary">View Live</a>
+        <a href="#" class="btn secondary">View Code</a>
     </div>
 
     <div class="card">
+        <div class="project-title">SAP Process Monitoring Concept</div>
+        <p>UI concept for ERP process tracking and issue monitoring.</p>
 
-        <div class="project-title">
-            SAP Process Monitoring Concept
+        <div class="tags">
+            <span class="tag">SAP</span>
+            <span class="tag">UI Concept</span>
         </div>
 
-        <p>
-            Concept UI for monitoring ERP operational process flow and issue tracking.
-        </p>
-
-        <a href="#" class="btn">
-            Preview Soon
-        </a>
-
+        <a href="#" class="btn primary">Preview</a>
     </div>
-
 </section>
 
-<!-- ===== EXPERIENCE ===== -->
+<!-- EXPERIENCE -->
 <section id="experience">
-
     <h2>Experience</h2>
-
     <div class="card">
-
-        <p>
-            SAP Power User supporting ERP operational processes, assisting users,
-            validating process flow, troubleshooting issues, and coordinating
-            with different departments to ensure smooth business operations.
-        </p>
-
+        <p>SAP Power User supporting ERP operations, troubleshooting issues, and coordinating with different departments.</p>
     </div>
-
 </section>
 
-<!-- ===== RESUME ===== -->
-<section class="resume-section">
+<!-- RESUME -->
+<section>
     <h2>Resume</h2>
     <div class="card">
-        <p>
-            Download my full resume for detailed work experience,
-            skills, and technical background.
-        </p>
-       <a href="./resume.pdf"
-   class="btn"
-   target="_blank">
-   View / Download Resume
-    </a>
+        <p>Download my full resume for detailed experience and skills.</p>
+
+        <a href="./resume.pdf" class="btn primary" target="_blank">
+            View / Download Resume
+        </a>
     </div>
 </section>
 
-<!-- ===== FUN FACT ===== -->
-<section>
-
-    <h2>Fun Fact</h2>
-
-    <div class="card">
-
-        <p>
-            I enjoy watching anime and analyzing how systems work —
-            this mindset helps me troubleshoot SAP issues and build
-            efficient solutions.
-        </p>
-
-    </div>
-
-</section>
-
-<!-- ===== CONTACT ===== -->
+<!-- CONTACT -->
 <section id="contact">
-
     <h2>Contact</h2>
-
     <div class="card contact">
-
         <p>Email: frank.devera22@gmail.com</p>
-        <p>Phone no.: 09154872768</p>
+        <p>Phone: 0915XXXXXXX</p>
         <p>Facebook: Franklin De Vera</p>
 
-        <p>
-            Currently available for collaboration,
-            ERP support, and web development learning opportunities.
+        <p style="color:#94a3b8; margin-top:15px;">
+            Open for SAP support roles and junior developer opportunities.
         </p>
-
     </div>
-
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
-
-    <p>
-        © 2026 Franklin De Vera | Portfolio
-    </p>
-
+    © 2026 Franklin De Vera | Portfolio
 </footer>
 
 </div>
 
-<!-- ===== JAVASCRIPT ===== -->
 <script>
 
-/* ===== TYPING EFFECT ===== */
+/* typing effect */
 const text = "Franklin De Vera";
-let index = 0;
+let i = 0;
 
 function type(){
-
-    if(index < text.length){
-
-        document.getElementById("typing").innerHTML += text.charAt(index);
-
-        index++;
-
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
         setTimeout(type, 100);
     }
 }
-
 type();
 
-/* ===== SCROLL REVEAL ===== */
+/* scroll reveal */
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
-
-    sections.forEach(section => {
-
-        const top = section.getBoundingClientRect().top;
-
-        if(top < window.innerHeight - 100){
-
-            section.classList.add("show");
+    sections.forEach(sec => {
+        if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+            sec.classList.add("show");
         }
-
     });
-
 });
 
-/* trigger reveal on first load */
 window.dispatchEvent(new Event('scroll'));
 
 </script>
